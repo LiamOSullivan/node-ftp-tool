@@ -1,1 +1,5 @@
+# Project files
+.vscode
+
+# Dependency directories
 node_modules/
