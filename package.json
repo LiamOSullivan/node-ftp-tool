@@ -2,14 +2,16 @@
   "name": "node-ftp-basic",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "bcd-geodemos-join.js",
+  "type": "module",
   "dependencies": {
-    "basic-ftp": "^4.6.3"
+    "basic-ftp": "^4.6.3",
+    "node": "^15.3.0"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "MIT"
 }
