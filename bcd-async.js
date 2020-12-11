@@ -1,7 +1,7 @@
 'use strict'
 
 class TimeoutError extends Error {
-  constructor (message) {
+  constructor(message) {
     super(message)
     this.name = 'TimeoutError'
   }
@@ -17,7 +17,7 @@ const fetchJsonAsync = async (url) => {
 
 export { fetchJsonAsync }
 
-const fetchJsonFromUrlAsyncTimeout = async (url, duration = 30000) => {
+const fetchJsonAsyncTimeout = async (url, duration = 30000) => {
   try {
     if (url != null) {
       const res = await Promise.race([fetch(url), new Promise((resolve, reject) => setTimeout(() => reject(new TimeoutError(`Timeout waiting for <b>${url}</b> to respond to our request for data`)), duration)
@@ -32,6 +32,8 @@ const fetchJsonFromUrlAsyncTimeout = async (url, duration = 30000) => {
     return e
   }
 }
+
+export { fetchJsonAsyncTimeout }
 
 const fetchCsvFromUrlAsyncTimeout = async (url, duration = 30000) => {
   try {
@@ -54,7 +56,7 @@ const fetchCsvFromUrlAsyncTimeout = async (url, duration = 30000) => {
 
 export { fetchCsvFromUrlAsyncTimeout }
 
-export { fetchJsonFromUrlAsyncTimeout }
+
 
 const forEachAsync = async (array, callback) => {
   for (let index = 0; index < array.length; index++) {
