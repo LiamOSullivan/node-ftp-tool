@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "bcd-geodemos-join.js",
-  "type": "module",
+  "type": "commonjs",
   "dependencies": {
     "basic-ftp": "^4.6.3",
-    "node": "^15.3.0"
+    "node": "^15.3.0",
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {},
   "scripts": {

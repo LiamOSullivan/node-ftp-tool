@@ -1,6 +1,9 @@
-import { fetchJsonAsyncTimeout } from './bcd-async.js'
-(async function main() {
-  'use strict'
+'use strict'
+
+const fetch = require('node-fetch')
+
+async function main() {
+
   console.log('start geodemos-join')
   try {
     // 1.fetch the map of SA -> group number
@@ -17,4 +20,22 @@ import { fetchJsonAsyncTimeout } from './bcd-async.js'
   catch (e) {
     console.log(e);
   }
-})()
+}
+
+const fetchJsonAsyncTimeout = async function (url, duration = 30000) {
+  try {
+    if (url != null) {
+      const res = await Promise.race([fetch(url), new Promise((resolve, reject) => setTimeout(() => reject(new TimeoutError(`Timeout waiting for <b>${url}</b> to respond to our request for data`)), duration)
+      )])
+      const json = await res.json()
+      return json
+    } else {
+      console.log(`Error trying to fetch invalid url. url is ${url}`)
+    }
+  } catch (e) {
+    console.log(`Error trying to fetch ${url}`)
+    return e
+  }
+}
+
+main()
